@@ -1,0 +1,235 @@
+@import 'libs/ui/theme/src/lib/variables';
+@import 'libs/ui/theme/src/lib/mixins';
+
+.cylo-app-layout {
+  display: grid;
+  grid-template-rows: $header-height 1fr $footer-height;
+  line-height: normal;
+  color: $pure-white !important;
+  background: $white !important;
+
+  .ant-layout-header {
+    width: 100%;
+    height: $header-height;
+    padding: 1rem 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    line-height: normal;
+    color: $pure-white;
+    background: $grey-base;
+
+    .app-header {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      align-items: center;
+      margin: 0 auto;
+      gap: 0;
+
+      .ami-logo {
+        font-size: 5rem;
+      }
+
+      .contact-section {
+        display: block;
+        font-size: 1rem;
+        line-height: 1.375rem;
+
+        .cs-1,
+        .cs-2 {
+          font-size: 0.875rem;
+          font-weight: 400;
+        }
+
+        .call-us {
+          font-size: 1.5rem;
+          font-weight: 600;
+        }
+      }
+
+      .phone-section {
+        display: none;
+      }
+    }
+
+    @include mobile-device {
+      .app-header {
+        .ami-logo {
+          width: 100px;
+          height: 50px;
+        }
+      }
+    }
+
+    @include small-device {
+      .app-header {
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+
+        .contact-section {
+          .cs-1,
+          .cs-2 {
+            font-size: 0.75rem;
+          }
+
+          .call-us {
+            font-size: 1.25rem;
+          }
+        }
+
+        .phone-section {
+          display: block;
+        }
+      }
+    }
+  }
+
+  .ant-layout-content {
+    padding: 0;
+    background: $body-bg;
+    min-height: calc(100vh - $header-height - $footer-height);
+
+    .cylo-main-content-wrapper {
+      margin: 0 auto;
+      min-height: 600px;
+      position: relative;
+    }
+  }
+
+  .ant-layout-footer {
+    width: 100%;
+    min-height: $footer-height;
+    padding: 2rem 0 1rem;
+    margin: 0;
+    line-height: normal;
+    color: $pure-white;
+    background: $grey-base;
+
+    .app-footer {
+      height: 100%;
+      margin: 0 auto;
+      grid-template-columns: 1fr;
+      grid-template-rows: 2fr auto 3fr;
+      gap: 1.5rem;
+      align-items: center;
+
+      .footer-nav-menu {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        li {
+          margin-right: 2rem;
+
+          a {
+            color: $white !important;
+            font-weight: 700;
+          }
+        }
+      }
+
+      .footer-nav-desc {
+        display: grid;
+        grid-template-columns: auto 125px;
+        align-self: flex-start;
+        justify-items: flex-start;
+        gap: 2rem;
+
+        .cylo-logo-small {
+          display: none;
+        }
+
+        .cylo-partner-logo {
+          margin-top: -1rem;
+        }
+
+        .cylo-logo-mobile {
+          display: none;
+        }
+      }
+
+      @include mobile-device {
+        .footer-nav-menu-container {
+          display: grid;
+          justify-items: center;
+        }
+
+        .footer-nav-menu {
+          li {
+            margin: 0 0.5rem;
+          }
+        }
+
+        .footer-nav-desc {
+          position: relative;
+          grid-template-columns: 1fr;
+          gap: 1rem;
+
+          .cylo-ami-logo,
+          .cylo-partner-logo {
+            display: none;
+          }
+
+          .cylo-logo-mobile {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            width: 100%;
+            justify-items: center;
+            gap: 1.25rem;
+            margin-top: 1rem;
+            margin-bottom: 3rem;
+
+            & > span:first-child {
+              justify-self: end;
+
+              & + span {
+                justify-self: start;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    @include small-device {
+      & {
+        padding: 2rem 1rem;
+
+        .app-footer {
+          grid-template-rows: auto;
+          padding: 0;
+          gap: 1.5rem;
+
+          .footer-nav-menu {
+            display: grid;
+            justify-content: center;
+            text-align: center;
+
+            li {
+              margin-top: 1.5rem;
+              margin-right: 0;
+            }
+          }
+
+          .footer-nav-desc {
+            grid-template-columns: 1fr;
+            gap: 0;
+            text-align: center;
+
+            .cylo-logo-mobile {
+              grid-template-columns: 1fr;
+
+              & > span:first-child {
+                justify-self: center;
+
+                & + span {
+                  justify-self: center;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
